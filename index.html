@@ -2,167 +2,201 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.6">
-    <title>السجل</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <title> مصر</title>
+    <!-- استدعاء خط Cairo للحصول على مظهر عربي أنيق -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #2b2b2b;
             margin: 0;
             padding: 0;
             line-height: 1.8;
         }
         header {
-            background-color: #1a252f;
-            color: #f1c40f;
+            background: linear-gradient(135deg, #111827, #1f2937);
+            color: #fbbf24;
             text-align: center;
-            padding: 40px 20px;
-            border-bottom: 5px solid #c0392b;
+            padding: 50px 20px;
+            border-bottom: 6px solid #b91c1c;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         header h1 {
             margin: 0;
-            font-size: 2.8em;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         header p {
-            font-size: 1.2em;
-            color: #ecf0f1;
-            margin-top: 10px;
+            font-size: 1.3em;
+            color: #f3f4f6;
+            margin-top: 15px;
+            opacity: 0.9;
         }
         main {
-            max-width: 1100px;
-            margin: 30px auto;
+            max-width: 1200px;
+            margin: 40px auto;
             padding: 0 20px;
         }
         .era-title {
-            background-color: #c0392b;
+            background: linear-gradient(to left, #991b1b, #dc2626);
             color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 50px;
-            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 60px;
+            margin-bottom: 25px;
             text-align: center;
-            font-size: 2em;
+            font-size: 2.2em;
+            box-shadow: 0 4px 6px rgba(220, 38, 38, 0.3);
         }
         .sub-era {
-            background-color: #2980b9;
+            background-color: #1e3a8a;
             color: white;
-            padding: 12px;
-            border-radius: 5px;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            font-size: 1.5em;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            border-right: 6px solid #fbbf24;
         }
         details {
             background-color: white;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        details:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         summary {
-            padding: 20px 25px;
-            font-size: 1.3em;
+            padding: 20px 30px;
+            font-size: 1.4em;
             font-weight: bold;
-            background-color: #2c3e50;
-            color: white;
+            background-color: #ffffff;
+            color: #111827;
             cursor: pointer;
             list-style: none;
             position: relative;
+            border-bottom: 1px solid transparent;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         summary::-webkit-details-marker {
             display: none;
         }
         summary::after {
-            content: '+';
+            content: '▼';
             position: absolute;
-            left: 20px;
-            font-size: 1.8em;
+            left: 30px;
+            font-size: 0.8em;
             top: 50%;
             transform: translateY(-50%);
+            color: #6b7280;
+            transition: transform 0.3s ease;
         }
         details[open] summary::after {
-            content: '-';
+            transform: translateY(-50%) rotate(180deg);
+            color: #2563eb;
         }
         details[open] summary {
-            background-color: #2980b9;
-            border-bottom: 2px solid #ecf0f1;
+            background-color: #f8fafc;
+            color: #2563eb;
+            border-bottom: 1px solid #e5e7eb;
         }
         .content {
-            padding: 25px;
+            padding: 30px;
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 30px;
             justify-content: space-between;
-            background-color: #fafafa;
+            background-color: #ffffff;
         }
         .img-container {
             flex: 1;
-            min-width: 250px;
-            max-width: 300px;
+            min-width: 280px;
+            max-width: 320px;
             text-align: center;
+            overflow: hidden;
+            border-radius: 10px;
         }
         .img-container img {
             width: 100%;
-            height: 250px;
-            border-radius: 8px;
-            border: 3px solid #bdc3c7;
+            height: 280px;
+            border-radius: 10px;
+            border: 4px solid #f3f4f6;
             object-fit: cover;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+        }
+        .img-container:hover img {
+            transform: scale(1.08);
         }
         .img-caption {
             display: block;
-            margin-top: 10px;
+            margin-top: 15px;
             font-weight: bold;
-            color: #7f8c8d;
-            background-color: #eee;
-            padding: 5px;
-            border-radius: 5px;
+            color: #4b5563;
+            background-color: #f3f4f6;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.95em;
         }
         .text-info {
             flex: 2;
             min-width: 300px;
             text-align: justify;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .text-info h4 {
             margin-top: 0;
-            color: #c0392b;
-            font-size: 1.4em;
-            border-bottom: 2px solid #c0392b;
-            padding-bottom: 5px;
+            color: #b91c1c;
+            font-size: 1.6em;
+            border-bottom: 3px solid #fca5a5;
+            padding-bottom: 8px;
             display: inline-block;
+            margin-bottom: 15px;
         }
         .text-info p {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 1.15em;
+            color: #374151;
+            line-height: 1.9;
+        }
+        .wiki-btn {
+            align-self: flex-start;
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
             font-size: 1.1em;
-            color: #444;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+        .wiki-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
         }
         footer {
             text-align: center;
-            padding: 30px;
-            background-color: #1a252f;
-            color: white;
-            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(135deg, #111827, #1f2937);
+            color: #9ca3af;
+            margin-top: 80px;
             font-size: 1.1em;
+            border-top: 4px solid #b91c1c;
         }
     </style>
-
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <link rel="manifest" href="./manifest.json?v=v1784227884968">
-    <meta name="theme-color" content="#3b82f6">
-    <link rel="apple-touch-icon" href="./icon-192.png?v=v1784227884968">
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js?v=v1784227884968')
-            .then(reg => console.log('SW Registered'))
-            .catch(err => console.log('SW Failed', err));
-        });
-      }
-    </script>
 </head>
 <body>
 
@@ -184,6 +218,7 @@
                 <div class="text-info">
                     <h4>حاكم الصعيد ما قبل التوحيد</h4>
                     <p>يعتبر الملك العقرب من أقوى حكام الصعيد قبل التوحيد. مهد الطريق بفتوحاته وحملاته العسكرية لتوحيد شطري البلاد، وتُظهر آثاره (مثل مقمعة العقرب) اهتمامه الشديد بالزراعة وشق الترع.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الملك_العقرب" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -202,6 +237,7 @@
                 <div class="text-info">
                     <h4>الأسرة الأولى</h4>
                     <p>موحد القطرين، وأول من ارتدى التاج المزدوج، مؤسس العاصمة منف. وحد مملكتي الشمال والجنوب حوالي عام 3100 قبل الميلاد ليؤسس أعظم حضارة في التاريخ.</p>
+                    <a href="https://ar.wikipedia.org/wiki/مينا" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -216,6 +252,7 @@
                 <div class="text-info">
                     <h4>الأسرة الأولى</h4>
                     <p>ثاني ملوك الأسرة الأولى، وطّد حكم مصر وبنى معابد في أبيدوس وسقارة. قاد حملات عسكرية للجنوب لتأمين الحدود.</p>
+                    <a href="https://ar.wikipedia.org/wiki/حور_عحا" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -230,6 +267,7 @@
                 <div class="text-info">
                     <h4>الأسرة الأولى</h4>
                     <p>عرف بلقب "المقاتل"، قاد حملات عسكرية للصحراء الغربية. اهتم بالتجارة وعثر في مقبرته على مشغولات ذهبية دقيقة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/دجر" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -244,6 +282,7 @@
                 <div class="text-info">
                     <h4>الأسرة الأولى</h4>
                     <p>عرف باسم ملك الثعبان، وله لوحة شهيرة في متحف اللوفر تعتبر تحفة فنية من عصر بداية الأسرات.</p>
+                    <a href="https://ar.wikipedia.org/wiki/جت_(فرعون)" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -257,7 +296,8 @@
                 </div>
                 <div class="text-info">
                     <h4>الأسرة الأولى</h4>
-                    <p>أول من لُقب بـ "ملك مصر العليا والسفلى"، وحكم لفترة طويلة. استخدم الدرج لأول مرة في تصميم المقابر الملكية.</p>
+                    <p>أول من لُقب بـ "ملك مصر العليا والسفلى"، وحكم لفترة طويلة. أدخل تغييرات هندسية كبيرة في بناء المقابر، حيث استخدم الدرج (السلالم) في مقبرته لأول مرة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/دن_(فرعون)" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -272,6 +312,7 @@
                 <div class="text-info">
                     <h4>الأسرة الأولى</h4>
                     <p>من أواخر ملوك الأسرة الأولى وشهدت نهايات عهده بعض الاضطرابات. تولى الحكم وهو متقدم في السن.</p>
+                    <a href="https://ar.wikipedia.org/wiki/عج_إب" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -286,6 +327,7 @@
                 <div class="text-info">
                     <h4>الأسرة الأولى</h4>
                     <p>اغتصب العرش ومسح اسم سلفه من الآثار لإثبات أحقيته. شهد عهده كوارث وانخفاضاً في النيل.</p>
+                    <a href="https://ar.wikipedia.org/wiki/سمر_خت" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -300,6 +342,7 @@
                 <div class="text-info">
                     <h4>الأسرة الأولى</h4>
                     <p>آخر ملوك الأسرة الأولى، ودفن في مقبرة كبيرة في أبيدوس عثر فيها على أختام توثق أسماء الملوك السابقين.</p>
+                    <a href="https://ar.wikipedia.org/wiki/قاع" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -314,7 +357,8 @@
                 </div>
                 <div class="text-info">
                     <h4>الأسرة الثانية</h4>
-                    <p>مؤسس الأسرة الثانية، واسمه يعني "القوتان تهدآن". نقل الدفن إلى سقارة بجوار العاصمة منف.</p>
+                    <p>مؤسس الأسرة الثانية، واسمه يعني "القوتان تهدآن". نقل الدفن إلى سقارة بجوار العاصمة منف واستقرت البلاد بعد اضطرابات.</p>
+                    <a href="https://ar.wikipedia.org/wiki/حتب_سخم_وي" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -329,6 +373,7 @@
                 <div class="text-info">
                     <h4>الأسرة الثانية</h4>
                     <p>أول ملك يربط اسمه بالإله الشمس "رع"، مما يدل على تنامي قوة كهنة عين شمس.</p>
+                    <a href="https://ar.wikipedia.org/wiki/رع_نب" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -343,6 +388,7 @@
                 <div class="text-info">
                     <h4>الأسرة الثانية</h4>
                     <p>حكم لفترة طويلة وتوجد آثاره في سقارة. أجرى إحصاءات دورية لثروات البلاد (إحصاء الماشية).</p>
+                    <a href="https://ar.wikipedia.org/wiki/ني_نتجر" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -356,7 +402,8 @@
                 </div>
                 <div class="text-info">
                     <h4>الأسرة الثانية</h4>
-                    <p>آخر ملوك الأسرة الثانية، أعاد توحيد البلاد بعد فترة اضطرابات أهلية وصراع بين الشمال والجنوب.</p>
+                    <p>آخر ملوك الأسرة الثانية، أعاد توحيد البلاد بعد فترة اضطرابات أهلية وصراع بين الشمال والجنوب وبنى حصوناً.</p>
+                    <a href="https://ar.wikipedia.org/wiki/خع_سخموي" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -372,6 +419,7 @@
                 <div class="text-info">
                     <h4>الأسرة الثالثة</h4>
                     <p>مؤسس الأسرة الثالثة وصاحب هرم سقارة المدرج، وهو أول بناء حجري ضخم في التاريخ بفضل مهندسه إمحوتب.</p>
+                    <a href="https://ar.wikipedia.org/wiki/زوسر" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -386,6 +434,7 @@
                 <div class="text-info">
                     <h4>الأسرة الثالثة</h4>
                     <p>خليفة زوسر، بدأ في بناء هرم مدرج خاص به ولكنه لم يكتمل ويُعرف باسم "الهرم المدفون".</p>
+                    <a href="https://ar.wikipedia.org/wiki/سخم_خت" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -400,6 +449,7 @@
                 <div class="text-info">
                     <h4>الأسرة الثالثة</h4>
                     <p>بنى الهرم المعروف باسم "هرم الطبقات" في زاوية العريان واستخرج الفيروز من سيناء.</p>
+                    <a href="https://ar.wikipedia.org/wiki/خع_با" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -414,6 +464,7 @@
                 <div class="text-info">
                     <h4>الأسرة الثالثة</h4>
                     <p>آخر ملوك الأسرة الثالثة وبنى هرم ميدوم الذي أكمله بعده الملك سنفرو.</p>
+                    <a href="https://ar.wikipedia.org/wiki/حوني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -429,6 +480,7 @@
                 <div class="text-info">
                     <h4>الأسرة الرابعة</h4>
                     <p>الملك المحسن المحبوب، وصاحب هرمي دهشور (الهرم المائل والهرم الأحمر) وأعظم البنائين.</p>
+                    <a href="https://ar.wikipedia.org/wiki/سنفرو" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -443,6 +495,7 @@
                 <div class="text-info">
                     <h4>الأسرة الرابعة</h4>
                     <p>صاحب الهرم الأكبر بالجيزة (إحدى عجائب الدنيا) ومراكب الشمس العظيمة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/خوفو" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -457,6 +510,7 @@
                 <div class="text-info">
                     <h4>الأسرة الرابعة</h4>
                     <p>ابن خوفو، بنى هرمه في منطقة أبو رواش، وهو أول من أضاف لقب "ابن رع".</p>
+                    <a href="https://ar.wikipedia.org/wiki/دجيدف_رع" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -470,7 +524,8 @@
                 </div>
                 <div class="text-info">
                     <h4>الأسرة الرابعة</h4>
-                    <p>صاحب الهرم الثاني وتمثال أبو الهول العظيم الذي يحرص جبانة الجيزة.</p>
+                    <p>صاحب الهرم الثاني وتمثال أبو الهول العظيم الذي يحرس جبانة الجيزة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/خفرع" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -485,6 +540,7 @@
                 <div class="text-info">
                     <h4>الأسرة الرابعة</h4>
                     <p>صاحب الهرم الثالث، عُرف بالتقوى والعدل وفتح المعابد التي أغلقها أسلافه.</p>
+                    <a href="https://ar.wikipedia.org/wiki/منكاورع" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -499,6 +555,7 @@
                 <div class="text-info">
                     <h4>الأسرة الرابعة</h4>
                     <p>آخر ملوك الأسرة الرابعة، خالف التقاليد وبنى مقبرة على شكل مصطبة عملاقة (مصطبة فرعون).</p>
+                    <a href="https://ar.wikipedia.org/wiki/شبسس_كاف" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -514,6 +571,7 @@
                 <div class="text-info">
                     <h4>الأسرة الخامسة</h4>
                     <p>مؤسس الأسرة، بدأ تقليد بناء معابد الشمس المكشوفة في أبو صير.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أوسركاف" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -528,6 +586,7 @@
                 <div class="text-info">
                     <h4>الأسرة الخامسة</h4>
                     <p>أرسل بعثات تجارية بحرية لبلاد بونت ولبنان وأسس أسطولاً بحرياً قوياً.</p>
+                    <a href="https://ar.wikipedia.org/wiki/ساحورع" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -542,6 +601,7 @@
                 <div class="text-info">
                     <h4>الأسرة الخامسة</h4>
                     <p>آخر ملوك الأسرة الخامسة، وأول من سجل "نصوص الأهرام" التعويذية داخل هرمه.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أوناس" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -556,6 +616,7 @@
                 <div class="text-info">
                     <h4>الأسرة السادسة</h4>
                     <p>مؤسس الأسرة السادسة، هرمه في سقارة مليء بالنصوص، وزاد في عهده نفوذ كبار الموظفين.</p>
+                    <a href="https://ar.wikipedia.org/wiki/تيتي_(فرعون)" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -570,6 +631,7 @@
                 <div class="text-info">
                     <h4>الأسرة السادسة</h4>
                     <p>حكم لفترة طويلة وشهد عهده نشاطاً عسكرياً وتجارياً لتأمين حدود البلاد.</p>
+                    <a href="https://ar.wikipedia.org/wiki/بيبي_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -584,6 +646,7 @@
                 <div class="text-info">
                     <h4>الأسرة السادسة</h4>
                     <p>صاحب أطول فترة حكم في التاريخ (حوالي 94 عاماً)، وضعفت في أواخر عهده السلطة المركزية تماماً مما أدى لانهيار الدولة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/بيبي_الثاني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -599,6 +662,7 @@
                 <div class="text-info">
                     <h4>الدولة الوسطى</h4>
                     <p>موحد مصر الثاني بعد عصر الفوضى والانتقال الأول، اتخذ من طيبة عاصمة، وصاحب معبد الدير البحري الفريد.</p>
+                    <a href="https://ar.wikipedia.org/wiki/منتوحتب_الثاني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -613,6 +677,7 @@
                 <div class="text-info">
                     <h4>الدولة الوسطى</h4>
                     <p>مؤسس الأسرة 12، نقل العاصمة إلى مدينة جديدة سماها "إيثت تاوي" ليسيطر على الشمال والجنوب.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أمنمحات_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -627,6 +692,7 @@
                 <div class="text-info">
                     <h4>الدولة الوسطى</h4>
                     <p>بنى مقياس النيل وأسس معابد في الكرنك، وترك لنا مسلة المطرية (أقدم مسلة قائمة في مصر).</p>
+                    <a href="https://ar.wikipedia.org/wiki/سنوسرت_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -641,6 +707,7 @@
                 <div class="text-info">
                     <h4>الدولة الوسطى</h4>
                     <p>الفرعون المحارب، حفر قناة سيزوستريس، وقاد حملات عسكرية شرسة لتأمين الحدود الجنوبية (السودان).</p>
+                    <a href="https://ar.wikipedia.org/wiki/سنوسرت_الثالث" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -655,6 +722,7 @@
                 <div class="text-info">
                     <h4>الدولة الوسطى</h4>
                     <p>شهد عهده رخاء زراعي هائل، استصلح أراضي الفيوم، وبنى سد اللاهون وقصر التيه (اللابرانث) الأسطوري.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أمنمحات_الثالث" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -669,6 +737,7 @@
                 <div class="text-info">
                     <h4>الدولة الوسطى</h4>
                     <p>أول امرأة تحكم مصر بشكل مؤكد في التاريخ كملك شرعي، وبها انتهت الأسرة الـ 12 وبدأ عصر الضعف.</p>
+                    <a href="https://ar.wikipedia.org/wiki/سبك_نفرو" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -685,6 +754,7 @@
                 <div class="text-info">
                     <h4>الاحتلال الأجنبي الأول</h4>
                     <p>قبائل آسيوية غزت مصر مستغلة ضعف الدولة واحتلت الدلتا وأجزاء من الصعيد. اتخذوا من "أواريس" عاصمة لهم، وأدخلوا سلاح العجلات الحربية. من أشهر ملوكهم خيان وأبوفيس.</p>
+                    <a href="https://ar.wikipedia.org/wiki/هكسوس" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -699,6 +769,7 @@
                 <div class="text-info">
                     <h4>الأسرة 17 (المقاومة)</h4>
                     <p>أمير طيبة الذي رفض خضوع الجنوب للهكسوس، وقاد أول حرب تحرير وسقط شهيداً في أرض المعركة بضربات فؤوس الهكسوس على رأسه.</p>
+                    <a href="https://ar.wikipedia.org/wiki/سقنن_رع_تاعا_الثاني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -713,6 +784,7 @@
                 <div class="text-info">
                     <h4>الأسرة 17 (المقاومة)</h4>
                     <p>الابن الأكبر لسقنن رع، أكمل مسيرة الكفاح بعد والده وحقق انتصارات كبيرة على الهكسوس ولكنه استشهد قبل أن يكمل طردهم.</p>
+                    <a href="https://ar.wikipedia.org/wiki/كامس" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -729,6 +801,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>قاهر الهكسوس وطاردهم خارج البلاد، ومؤسس الدولة الحديثة والإمبراطورية. أعاد توحيد البلاد وطور الجيش.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أحمس_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -743,6 +816,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>ابن أحمس، قاد حملات لتأمين الحدود وبنى معابد في الكرنك وقدس كإله حامي لعمال دير المدينة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أمنحتب_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -757,6 +831,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>وسع حدود مصر للفرات شمالاً والشلال الرابع جنوباً، وهو أول من دُفن في وادي الملوك السري.</p>
+                    <a href="https://ar.wikipedia.org/wiki/تحتمس_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -771,6 +846,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>حكمت مصر بازدهار وتنمية، وصاحبة معبد الدير البحري. أرسلت بعثة ضخمة لبلاد بونت لجلب البخور والعطور.</p>
+                    <a href="https://ar.wikipedia.org/wiki/حتشبسوت" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -784,7 +860,8 @@
                 </div>
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
-                    <p>إمبراطور مصر الأعظم وعبقري العسكرية، بطل معركة مجدو، وخاض 17 حملة عسكرية دون هزيمة ووثقها في الكرنك.</p>
+                    <p>إمبراطور مصر الأعظم وعبقري العسكرية، بطل معركة مجدو، وخاض حملات عسكرية أسست إمبراطورية واسعة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/تحتمس_الثالث" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -799,6 +876,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>ابن تحتمس الثالث، عُرف بقوته البدنية المذهلة وبراعته في استخدام القوس وقمع المتمردين في آسيا بقسوة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أمنحتب_الثاني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -813,6 +891,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>صاحب لوحة الحلم الشهيرة الموجودة بين يدي تمثال أبو الهول التي أزاح عنها الرمال لتأكيد شرعيته.</p>
+                    <a href="https://ar.wikipedia.org/wiki/تحتمس_الرابع" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -826,7 +905,8 @@
                 </div>
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
-                    <p>فرعون الدبلوماسية والسلام والرخاء، ترك أروع الآثار كمعبد الأقصر وتمثالي ممنون، وتزوج الملكة العظيمة تي.</p>
+                    <p>فرعون الدبلوماسية والسلام والرخاء، ترك أروع الآثار كمعبد الأقصر وتمثالي ممنون.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أمنحتب_الثالث" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -840,7 +920,8 @@
                 </div>
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
-                    <p>صاحب أول ثورة دينية للتوحيد (عبادة آتون)، ونقل العاصمة لتل العمارنة وترك أمور الإمبراطورية مما أضعفها.</p>
+                    <p>صاحب أول ثورة دينية للتوحيد (عبادة آتون)، ونقل العاصمة لتل العمارنة وترك أمور الإمبراطورية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أخناتون" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -855,6 +936,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>خليفة أخناتون الغامض الذي حكم لفترة قصيرة جداً وتكثر حوله النظريات.</p>
+                    <a href="https://ar.wikipedia.org/wiki/سمنخ_كارع" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -869,6 +951,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>الفرعون الذهبي الشاب، أُكتشفت مقبرته كاملة بكنوزها عام 1922، وأعاد الديانة القديمة بعد ثورة أخناتون.</p>
+                    <a href="https://ar.wikipedia.org/wiki/توت_عنخ_آمون" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -883,6 +966,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>وزير القصر الداهية ومستشار توت عنخ آمون الذي تزوج أرملته وحكم بعده لفترة قصيرة وهو مسن.</p>
+                    <a href="https://ar.wikipedia.org/wiki/آي_(فرعون)" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -897,6 +981,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 18</h4>
                     <p>قائد الجيش الذي أنهى الفوضى وأعاد الاستقرار والنظام، وأصدر قوانين صارمة لردع الفساد.</p>
+                    <a href="https://ar.wikipedia.org/wiki/حورمحب" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -913,6 +998,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 19</h4>
                     <p>مؤسس الأسرة 19، كان قائداً للجيش واختاره حورمحب ليكون وريثه لضمان استقرار الحكم.</p>
+                    <a href="https://ar.wikipedia.org/wiki/رمسيس_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -927,12 +1013,13 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 19</h4>
                     <p>بنى معبد أبيدوس العظيم الذي يحوي قائمة الملوك، وقاد حملات لاستعادة النفوذ المصري في الشام.</p>
+                    <a href="https://ar.wikipedia.org/wiki/سيتي_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
 
         <details>
-            <summary>الملك رمسيس الثاني</summary>
+            <summary>المل الملك رمسيس الثاني</summary>
             <div class="content">
                 <div class="img-container">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Statue_of_Ramesses_II_at_Luxor_Temple.jpg/400px-Statue_of_Ramesses_II_at_Luxor_Temple.jpg" alt="رمسيس الثاني">
@@ -941,6 +1028,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 19</h4>
                     <p>من أعظم الفراعنة والبنائين، بطل معركة قادش وعاقد أول معاهدة سلام مكتوبة. بنى معابد أبو سمبل والرامسيوم.</p>
+                    <a href="https://ar.wikipedia.org/wiki/رمسيس_الثاني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -955,6 +1043,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 19</h4>
                     <p>ابن رمسيس الثاني، انتصر على تحالف قبائل الليبيين وشعوب البحر وأنقذ مصر من الدمار ووثق ذلك في لوحته الشهيرة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/مرنبتاح" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -969,6 +1058,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 19</h4>
                     <p>اخر حكام الأسرة الـ 19، أعلنت نفسها فرعوناً بعد وفاة زوجها وابن زوجها، وانتهى حكمها بانقلاب وفوضى.</p>
+                    <a href="https://ar.wikipedia.org/wiki/تاوسرت" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -983,6 +1073,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 20</h4>
                     <p>مؤسس الأسرة العشرين العسكري، أعاد النظام والأمن وطرد المرتزقة بعد فترة فوضى قصيرة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/ست_نخت" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -997,6 +1088,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 20</h4>
                     <p>آخر الفراعنة العظام، أنقذ مصر من غزو شامل وكاسح لشعوب البحر برياً وبحرياً، وبنى معبد مدينة هابو المحصن.</p>
+                    <a href="https://ar.wikipedia.org/wiki/رمسيس_الثالث" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1011,6 +1103,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 20</h4>
                     <p>مجموعة من الملوك الضعاف الذين حكموا في نهايات عصر الدولة الحديثة وسط تنامي نفوذ كهنة آمون وانهيار الاقتصاد.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الأسرة_المصرية_العشرون" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1027,6 +1120,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 22 (الليبية)</h4>
                     <p>مؤسس الأسرة، من أصول ليبية (قبائل المشواش)، أعاد توحيد البلاد جزئياً وقام بحملات ناجحة في فلسطين وسوريا.</p>
+                    <a href="https://ar.wikipedia.org/wiki/شيشنق_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1041,6 +1135,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 25 (النوبية/الكوشية)</h4>
                     <p>أحد أعظم ملوك الأسرة النوبية الكوشية. شهد عهده نهضة معمارية، وقاوم الغزو الآشوري لمصر بشراسة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/طهارقة" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1055,6 +1150,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 26 (الصاوية)</h4>
                     <p>أمير سايس الذي استعان باليونانيين وطرد الآشوريين وأسس عصر النهضة المصرية الأخيرة وأعاد الفن القديم.</p>
+                    <a href="https://ar.wikipedia.org/wiki/بسماتيك_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1068,7 +1164,8 @@
                 </div>
                 <div class="text-info">
                     <h4>الأسرة 27 و 31</h4>
-                    <p>غزا الفرس مصر (قمبيز) وأنهوا الاستقلال، وحولوا مصر لولاية تابعة للإمبراطورية الفارسية، وأذاقوا المصريين الويلات حتى طردهم الإسكندر.</p>
+                    <p>غزا الفرس مصر (قمبيز ودارا الأول) وأنهوا الاستقلال، وحولوا مصر لولاية تابعة للإمبراطورية الفارسية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الأسرة_المصرية_السابعة_والعشرون" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1083,6 +1180,7 @@
                 <div class="text-info">
                     <h4>الأسرة الـ 30 (المقاومة)</h4>
                     <p>آخر فرعون مصري أصلي قبل الاحتلال الفارسي الثاني ثم دخول الإسكندر. دافع عن مصر طويلاً لكنه هُزم في النهاية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/نختنبو_الثاني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1101,6 +1199,7 @@
                 <div class="text-info">
                     <h4>نهاية الفراعنة</h4>
                     <p>دخل مصر عام 332 ق.م محرراً إياها من الفرس، وتُوج فرعوناً وأسس مدينة "الإسكندرية" العظيمة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الإسكندر_الأكبر" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1115,6 +1214,7 @@
                 <div class="text-info">
                     <h4>الحكم الإغريقي</h4>
                     <p>استقل القائد "بطليموس الأول" بمصر. حكموا 3 قرون، واهتموا بالعلم فبنوا المكتبة والفنار. انتهت بـ "كليوباترا السابعة" وانتحارها.</p>
+                    <a href="https://ar.wikipedia.org/wiki/المملكة_البطلمية" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1129,6 +1229,7 @@
                 <div class="text-info">
                     <h4>الاستعمار الروماني</h4>
                     <p>حول "أغسطس قيصر" مصر لولاية تابعة لروما تُدار بالقوة. عانى المصريون من الضرائب الباهظة والاضطهاد الديني (عصر الشهداء)، واستمر الحكم حتى عهد "المقوقس".</p>
+                    <a href="https://ar.wikipedia.org/wiki/مصر_الرومانية" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1147,6 +1248,7 @@
                 <div class="text-info">
                     <h4>دخول الإسلام وتأسيس الفسطاط</h4>
                     <p>القائد العربي الذي فتح مصر عام 641 م وحررها من الروم. أسس عاصمة "الفسطاط"، وتحولت مصر لولاية يحكمها ولاة تعينهم الخلافة المركزية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/عمرو_بن_العاص" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1161,6 +1263,7 @@
                 <div class="text-info">
                     <h4>الاستقلال عن بغداد</h4>
                     <p>والي تركي الأصل، استقل بمصر عن الخلافة العباسية وأسس مدينة "القطائع" وبنى مسجده الشهير.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أحمد_بن_طولون" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1175,6 +1278,7 @@
                 <div class="text-info">
                     <h4>الحكم الإخشيدي</h4>
                     <p>أسس محمد بن طغج دولته المستقلة. ومن أشهر حكامها لاحقاً الوصي "كافور الإخشيدي" الذي أدار شؤون البلاد ببراعة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الدولة_الإخشيدية" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1189,6 +1293,7 @@
                 <div class="text-info">
                     <h4>الخلافة الفاطمية (الشيعية)</h4>
                     <p>أرسل الخليفة المعز قائده جوهر الصقلي الذي بنى "القاهرة" والجامع الأزهر. تميزت بالثراء التجاري والثقافي، وتخبطت في عهد الحاكم بأمر الله.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الدولة_الفاطمية" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1203,6 +1308,7 @@
                 <div class="text-info">
                     <h4>محارب الصليبيين ومؤسس القلعة</h4>
                     <p>أنهى الخلافة الفاطمية وأعاد مصر للمذهب السني. بنى قلعة الجبل لتحصين القاهرة، واسترد بيت المقدس بعد نصر معركة حطين.</p>
+                    <a href="https://ar.wikipedia.org/wiki/صلاح_الدين_الأيوبي" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1217,6 +1323,7 @@
                 <div class="text-info">
                     <h4>منقذو العالم الإسلامي</h4>
                     <p>استولوا على الحكم كغلمان مقاتلين. أنقذوا مصر والعالم من خطر التتار (المغول) في معركة عين جالوت بقيادة المظفر قطز والظاهر بيبرس.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الدولة_المملوكية" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1231,6 +1338,7 @@
                 <div class="text-info">
                     <h4>الفروسية والعمارة ونهاية الدولة</h4>
                     <p>شيدوا مساجد ومجمعات عظيمة (مثل قلاوون). انتهت دولتهم بشنق السلطان "طومان باي" على باب زويلة إثر هزيمتهم أمام الغزو العثماني.</p>
+                    <a href="https://ar.wikipedia.org/wiki/المماليك_البرجية" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1245,6 +1353,7 @@
                 <div class="text-info">
                     <h4>الاحتلال العثماني</h4>
                     <p>حول السلطان سليم الأول مصر إلى ولاية يحكمها والي من الآستانة. وعانت من العزلة، وحاول أمراء المماليك كـ "علي بك الكبير" الانفصال بها لكنهم فشلوا.</p>
+                    <a href="https://ar.wikipedia.org/wiki/سليم_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1259,6 +1368,7 @@
                 <div class="text-info">
                     <h4>الاستعمار الفرنسي القصير</h4>
                     <p>حملة عسكرية بقيادة نابليون بونابرت. واجهت مقاومة شرسة من المصريين، ورغم وحشيتها إلا أنها أيقظت الوعي واكتشفت حجر رشيد، وانتهت بجلاء الفرنسيين.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الحملة_الفرنسية_على_مصر" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1277,6 +1387,7 @@
                 <div class="text-info">
                     <h4>مؤسس مصر الحديثة</h4>
                     <p>تولى بإرادة شعبية، بنى جيشاً نظامياً مصرياً، أنشأ المصانع العسكرية والمدنية، أدخل القطن، وأسس دولة عظمى كادت أن تسقط الخلافة العثمانية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/محمد_علي_باشا" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1291,6 +1402,7 @@
                 <div class="text-info">
                     <h4>الابن الأكبر والقائد العسكري</h4>
                     <p>قاد الجيش المصري لانتصارات مبهرة في الحجاز والشام. حكم لعدة أشهر فقط في حياة أبيه بسبب مرضه.</p>
+                    <a href="https://ar.wikipedia.org/wiki/إبراهيم_باشا_(والي_مصر)" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1305,6 +1417,7 @@
                 <div class="text-info">
                     <h4>حفيد محمد علي</h4>
                     <p>أغلق المصانع والمدارس لرفضه التغريب، لكنه يُحسب له التعاقد لإنشاء أول خط سكة حديد في مصر بين القاهرة والإسكندرية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/عباس_حلمي_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1319,6 +1432,7 @@
                 <div class="text-info">
                     <h4>صاحب اللائحة السعيدية</h4>
                     <p>أصدر اللائحة السعيدية لتمليك الأراضي للفلاحين. ومنح ديليسبس امتياز حفر قناة السويس بشروط قاسية جداً على مصر.</p>
+                    <a href="https://ar.wikipedia.org/wiki/محمد_سعيد_باشا" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1333,6 +1447,7 @@
                 <div class="text-info">
                     <h4>قطعة من أوروبا ومأزق الديون</h4>
                     <p>جعل القاهرة كباريس، افتتح قناة السويس باحتفال عالمي، وأسس مجلس شورى النواب. لكن إسرافه أدخل مصر في ديون ضخمة أدت لعزله.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الخديوي_إسماعيل" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1347,6 +1462,7 @@
                 <div class="text-info">
                     <h4>الخضوع للإنجليز</h4>
                     <p>ابن إسماعيل. واجه الثورة العرابية، ولاستعادة عرشه استعان بالأسطول البريطاني الذي قصف الإسكندرية واحتل مصر 1882.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الخديوي_توفيق" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1361,6 +1477,7 @@
                 <div class="text-info">
                     <h4>الاستعمار الإنجليزي</h4>
                     <p>أصبح "المعتمد البريطاني" هو الحاكم الفعلي الذي يصدر الأوامر، وظل الخديوي مجرد سلطة صورية حتى تصريح 28 فبراير.</p>
+                    <a href="https://ar.wikipedia.org/wiki/الاحتلال_البريطاني_لمصر" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1375,6 +1492,7 @@
                 <div class="text-info">
                     <h4>آخر خديوي لمصر</h4>
                     <p>شجع الحركة الوطنية لمصطفى كامل وعادى الإنجليز، فاستغلت بريطانيا الحرب العالمية الأولى وعزلته.</p>
+                    <a href="https://ar.wikipedia.org/wiki/عباس_حلمي_الثاني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1389,6 +1507,7 @@
                 <div class="text-info">
                     <h4>سلطان مصر</h4>
                     <p>عينته بريطانيا وأعطته لقب "سلطان" كإعلان رسمي لانفصال مصر عن الدولة العثمانية وفرض الحماية البريطانية الشاملة.</p>
+                    <a href="https://ar.wikipedia.org/wiki/حسين_كامل_(سلطان_مصر)" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1403,6 +1522,7 @@
                 <div class="text-info">
                     <h4>ملك الاستقلال والدستور</h4>
                     <p>في عهده قامت ثورة 1919، وصدر تصريح 1922، وأول دستور 1923 الذي أرسى الحياة البرلمانية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/فؤاد_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1417,6 +1537,7 @@
                 <div class="text-info">
                     <h4>نهاية العصر الملكي</h4>
                     <p>تولى كشاب محبوب، شهد الحرب العالمية وحادث 4 فبراير وحرب فلسطين، وانتهى حكمه بانتشار الفساد وقيام ثورة 23 يوليو.</p>
+                    <a href="https://ar.wikipedia.org/wiki/فاروق_الأول" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1431,6 +1552,7 @@
                 <div class="text-info">
                     <h4>آخر حكام الأسرة العلوية</h4>
                     <p>تولى الحكم وهو رضيع تحت مجلس وصاية بعد تنازل والده، وعُزل رسمياً بإعلان الجمهورية في 1953.</p>
+                    <a href="https://ar.wikipedia.org/wiki/أحمد_فؤاد_الثاني" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1448,6 +1570,7 @@
                 <div class="text-info">
                     <h4>الواجهة العسكرية والأول</h4>
                     <p>اختاره الضباط الأحرار كقائد لثورة يوليو وأصبح أول رئيس. عُزل وحددت إقامته لخلافه مع مجلس القيادة حول عودة الديمقراطية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/محمد_نجيب" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1462,6 +1585,7 @@
                 <div class="text-info">
                     <h4>القائد الفعلي للثورة</h4>
                     <p>أمم قناة السويس، وبنى السد العالي، وأقر الإصلاح الزراعي ومجانية التعليم، وقاد مرحلة الاستنزاف بعد نكسة 1967.</p>
+                    <a href="https://ar.wikipedia.org/wiki/جمال_عبد_الناصر" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1476,6 +1600,7 @@
                 <div class="text-info">
                     <h4>بطل الحرب والسلام</h4>
                     <p>اتخذ قرار نصر أكتوبر 73، وفاجأ العالم بمعاهدة السلام لاسترداد سيناء كاملة. انفتح اقتصادياً واغتيل وسط جنوده.</p>
+                    <a href="https://ar.wikipedia.org/wiki/محمد_أنور_السادات" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1490,6 +1615,7 @@
                 <div class="text-info">
                     <h4>الضامن الدستوري</h4>
                     <p>رئيس مجلس الشعب، تولى رئاسة الجمهورية مؤقتاً لـ 8 أيام كضامن لانتقال سلمي للسلطة بعد اغتيال السادات.</p>
+                    <a href="https://ar.wikipedia.org/wiki/صوفي_أبو_طالب" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1504,6 +1630,7 @@
                 <div class="text-info">
                     <h4>الاستقرار والبنية التحتية</h4>
                     <p>استرد طابا، وحافظ على السلام وتجنب الحروب، وبنى مترو الأنفاق والمدن الجديدة. تنحى إثر غضب شعبي في ثورة 25 يناير.</p>
+                    <a href="https://ar.wikipedia.org/wiki/محمد_حسني_مبارك" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1518,6 +1645,7 @@
                 <div class="text-info">
                     <h4>حامي مؤسسات الدولة</h4>
                     <p>أدار شؤون البلاد في فترة بالغة الخطورة والتعقيد بعد مبارك، وحافظ على الدولة من الانهيار حتى سلم السلطة طواعية.</p>
+                    <a href="https://ar.wikipedia.org/wiki/محمد_حسين_طنطاوي" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1532,6 +1660,7 @@
                 <div class="text-info">
                     <h4>الرئيس المنتخب</h4>
                     <p>حكم لعام واحد اتسم بالاستقطاب والصدام مع مؤسسات الدولة، وانتهى حكمه بالعزل استجابة لمطالب ثورة 30 يونيو.</p>
+                    <a href="https://ar.wikipedia.org/wiki/محمد_مرسي" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1546,6 +1675,7 @@
                 <div class="text-info">
                     <h4>رجل القانون والدستور</h4>
                     <p>رئيس المحكمة الدستورية الذي أدار المرحلة الانتقالية بوقار، وشهد عهده صياغة وإقرار دستور مصر لعام 2014.</p>
+                    <a href="https://ar.wikipedia.org/wiki/عدلي_منصور" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
@@ -1560,6 +1690,7 @@
                 <div class="text-info">
                     <h4>الرئيس الحالي وقاهر الإرهاب</h4>
                     <p>قاد مصر للقضاء على الإرهاب الأسود. أطلق خطة تنمية شاملة، بنى العاصمة الإدارية ومشاريع طرق جبارة لتأسيس "الجمهورية الجديدة".</p>
+                    <a href="https://ar.wikipedia.org/wiki/عبد_الفتاح_السيسي" target="_blank" class="wiki-btn">اقرأ المزيد على ويكيبيديا</a>
                 </div>
             </div>
         </details>
